@@ -15,6 +15,7 @@ from timm.data import Mixup
 from timm.data import create_transform
 from timm.data.transforms import _pil_interp
 
+from dataset.river_dataset import RiverDataset
 from .cached_image_folder import CachedImageFolder
 from .samplers import SubsetRandomSampler
 
@@ -83,7 +84,10 @@ def build_dataset(is_train, config):
             dataset = datasets.ImageFolder(root, transform=transform)
         nb_classes = 1000
     else:
-        raise NotImplementedError("We only support ImageNet Now.")
+        dataset = RiverDataset('data/train_data', 'data/train_data/train_label.csv', 448)
+        nb_classes = 4
+
+        # raise NotImplementedError("We only support ImageNet Now.")
 
     return dataset, nb_classes
 

@@ -19,13 +19,14 @@ _C.BASE = ['']
 # -----------------------------------------------------------------------------
 _C.DATA = CN()
 # Batch size for a single GPU, could be overwritten by command line argument
-_C.DATA.BATCH_SIZE = 128
+_C.DATA.BATCH_SIZE = 8
 # Path to dataset, could be overwritten by command line argument
 _C.DATA.DATA_PATH = ''
 # Dataset name
-_C.DATA.DATASET = 'imagenet'
+# _C.DATA.DATASET = 'imagenet'
+_C.DATA.DATASET = 'river-pollution'
 # Input image size
-_C.DATA.IMG_SIZE = 224
+_C.DATA.IMG_SIZE = 448
 # Interpolation to resize image (random, bilinear, bicubic)
 _C.DATA.INTERPOLATION = 'bicubic'
 # Use zipped dataset instead of folder dataset
@@ -49,7 +50,7 @@ _C.MODEL.NAME = 'swin_tiny_patch4_window7_224'
 # Checkpoint to resume, could be overwritten by command line argument
 _C.MODEL.RESUME = ''
 # Number of classes, overwritten in data preparation
-_C.MODEL.NUM_CLASSES = 1000
+_C.MODEL.NUM_CLASSES = 4
 # Dropout rate
 _C.MODEL.DROP_RATE = 0.0
 # Drop path rate
@@ -88,8 +89,8 @@ _C.MODEL.SWIN_MLP.PATCH_NORM = True
 # -----------------------------------------------------------------------------
 _C.TRAIN = CN()
 _C.TRAIN.START_EPOCH = 0
-_C.TRAIN.EPOCHS = 300
-_C.TRAIN.WARMUP_EPOCHS = 20
+_C.TRAIN.EPOCHS = 40
+_C.TRAIN.WARMUP_EPOCHS = 10
 _C.TRAIN.WEIGHT_DECAY = 0.05
 _C.TRAIN.BASE_LR = 5e-4
 _C.TRAIN.WARMUP_LR = 5e-7
@@ -109,7 +110,7 @@ _C.TRAIN.USE_CHECKPOINT = False
 _C.TRAIN.LR_SCHEDULER = CN()
 _C.TRAIN.LR_SCHEDULER.NAME = 'cosine'
 # Epoch interval to decay LR, used in StepLRScheduler
-_C.TRAIN.LR_SCHEDULER.DECAY_EPOCHS = 30
+_C.TRAIN.LR_SCHEDULER.DECAY_EPOCHS = 10
 # LR decay rate, used in StepLRScheduler
 _C.TRAIN.LR_SCHEDULER.DECAY_RATE = 0.1
 
